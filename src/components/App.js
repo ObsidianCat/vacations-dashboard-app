@@ -9,7 +9,7 @@ const App = (props) =>{
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header className="mdl-layout__header">
         <div className="mdl-layout__header-row">
-          <IndexLink to="/"><span className="mdl-layout-title">Title</span></IndexLink>
+          <IndexLink to="/"><span className="mdl-layout-title">Time travel vacations dashboard </span></IndexLink>
           <div className="mdl-layout-spacer"></div>
           <nav className="mdl-navigation mdl-layout--large-screen-only">
             <p className="mdl-navigation__link">

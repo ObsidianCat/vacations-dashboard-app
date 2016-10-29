@@ -1,0 +1,9 @@
+@import '../abstracts/palette';
+
+.mdl-layout__header{
+ background-color: $c-grey-600;
+
+  a{
+    color: $c-amber-300;
+  }
+}
