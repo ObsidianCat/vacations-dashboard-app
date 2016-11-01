@@ -9,7 +9,7 @@ export function loadDestsSuccess(destinations) {
 
 export function loadAllDestinations() {
   return dispatch =>{
-    return fetch(`http://localhost:3333/api/destinations`)
+    return fetch(`https://art-and-history.herokuapp.com/api/destinations`)
       .then(response => response.json())
       .then(json => dispatch(loadDestsSuccess(json)))
       .catch(error =>{
