@@ -1,21 +1,25 @@
 import React, {PropTypes} from 'react';
 
-const DestinationsList = ({destination})=>{
+const DestinationsList = ({destinations})=>{
+  const menuItems = destinations.map((dest, index) => {
+      return <a key={index} href="#">{dest.placeName}</a>;
+  });
+
+  console.log('destinations data', destinations);
+  console.log('react destinations', menuItems);
+
   return (
-    <div classNameName="mdl-layout__drawer">
+    <div className="mdl-layout__drawer">
       <span className="mdl-layout-title">Destinations</span>
       <nav className="mdl-navigation">
-        {/*{destination.map((dest) => {*/}
-           {/*return <a href="#">dest</a>*/}
-          {/*}*/}
-        {/*)}*/}
+        {menuItems}
       </nav>
     </div>
   );
 };
 
 DestinationsList.propTypes = {
-  destination: PropTypes.object.isRequired
+  destinations: PropTypes.array.isRequired
 };
 
 export default DestinationsList;

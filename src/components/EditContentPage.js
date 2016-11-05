@@ -9,11 +9,15 @@ import DestinationsList from './DestinationsList';
 import { browserHistory } from 'react-router';
 
 class EditContentPage extends React.Component{
+  constructor(props, context){
+    super(props, context);
+  }
+
   render(){
     return (
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-        <div class="mdl-layout__drawer">
-          <DestinationsList destinations={destinations}/>
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div className="mdl-layout__drawer">
+          <DestinationsList destinations={this.props.destinations}/>
         </div>
         <div>
           <h1>Edit Content Page</h1>
