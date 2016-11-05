@@ -4,6 +4,9 @@
 import React, {PropTypes} from 'react';
 import { Link, IndexLink } from 'react-router';
 
+import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 const App = (props) =>{
   return (
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">

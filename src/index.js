@@ -16,6 +16,11 @@ import {loadAllDestinations} from './actions/destinationActions';
 
 import { syncHistoryWithStore } from 'react-router-redux';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
 const store = configureStore();
 store.dispatch(loadAllDestinations());
 const history = syncHistoryWithStore(browserHistory, store);

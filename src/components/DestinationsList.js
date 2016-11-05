@@ -5,8 +5,8 @@ const DestinationsList = ({destinations})=>{
       return <a key={index} href="#">{dest.placeName}</a>;
   });
 
-  console.log('destinations data', destinations);
-  console.log('react destinations', menuItems);
+  console.log('received data', destinations);
+  console.log('manipulated destinations', menuItems);
 
   return (
     <div className="mdl-layout__drawer">

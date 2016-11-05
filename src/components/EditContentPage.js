@@ -16,9 +16,7 @@ class EditContentPage extends React.Component{
   render(){
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-        <div className="mdl-layout__drawer">
-          <DestinationsList destinations={this.props.destinations}/>
-        </div>
+        <DestinationsList destinations={this.props.destinations}/>
         <div>
           <h1>Edit Content Page</h1>
         </div>
