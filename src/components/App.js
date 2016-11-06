@@ -9,8 +9,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const App = (props) =>{
   return (
-    <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header className="mdl-layout__header">
+    <div className="wrap container-fluid mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header className="row mdl-layout__header">
         <div className="mdl-layout__header-row">
           <IndexLink to="/"><span className="mdl-layout-title">Time travel vacations dashboard </span></IndexLink>
           <div className="mdl-layout-spacer"></div>
@@ -24,10 +24,8 @@ const App = (props) =>{
           </nav>
         </div>
       </header>
-      <main className="mdl-layout__content">
-        <div className="page-content">
-          {props.children}
-        </div>
+      <main className="page-section mdl-layout__content">
+        {props.children}
       </main>
     </div>
   );

@@ -1,17 +1,16 @@
 import React, {PropTypes} from 'react';
 
-const DestinationsList = ({destinations})=>{
+const DestinationsList = ({destinations, selectDestination })=>{
   const menuItems = destinations.map((dest, index) => {
-      return <a key={index} href="#">{dest.placeName}</a>;
+      return <li className="mdl-list__item" key={index}>
+        <a className="mdl-list__item-primary-content"  href="#" onClick={()=>{selectDestination(dest)}}>{dest.placeName}</a>
+      </li>;
   });
 
-  console.log('received data', destinations);
-  console.log('manipulated destinations', menuItems);
-
   return (
-    <div className="mdl-layout__drawer">
+    <div className="col-xs-3">
       <span className="mdl-layout-title">Destinations</span>
-      <nav className="mdl-navigation">
+      <nav className="mdl-list">
         {menuItems}
       </nav>
     </div>
@@ -19,7 +18,9 @@ const DestinationsList = ({destinations})=>{
 };
 
 DestinationsList.propTypes = {
-  destinations: PropTypes.array.isRequired
+  destinations: PropTypes.array.isRequired,
+  selectDestination: PropTypes.func.isRequired
+
 };
 
 export default DestinationsList;

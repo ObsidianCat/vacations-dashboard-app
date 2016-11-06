@@ -6,23 +6,44 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as destinationActions from '../actions/destinationActions';
 import DestinationsList from './DestinationsList';
+import EditDestination from './EditDestination';
+
 import { browserHistory } from 'react-router';
 
-class EditContentPage extends React.Component{
-  constructor(props, context){
+class EditContentPage extends React.Component {
+  constructor(props, context) {
     super(props, context);
+
+    this.state = {
+      selectedDestination: {placeName:''}
+    };
+
+    this.onSelectDestination = this.onSelectDestination.bind(this);
+
   }
 
-  render(){
-    return (
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-        <DestinationsList destinations={this.props.destinations}/>
-        <div>
-          <h1>Edit Content Page</h1>
+    onSelectDestination(dest)
+    {
+      console.log('onSelectDestination', dest);
+      this.setState({selectedDestination:dest});
+      console.log(this.state.selectedDestination);
+    };
+
+    render()
+    {
+      return (
+        <div className="row mdl-layout--fixed-drawer">
+          <DestinationsList
+            destinations={this.props.destinations}
+            selectDestination={this.onSelectDestination}/>
+          <div className="col-xs-9">
+            <h1>Edit destination</h1>
+            <EditDestination selectedDestination={this.state.selectedDestination} />
+          </div>
         </div>
-      </div>
-    )
-  }
+      )
+    }
+
 }
 
 EditContentPage.propTypes = {
