@@ -16,7 +16,7 @@ class EditContentPage extends React.Component {
     super(props, context);
 
     this.state = {
-      selectedDestination: {placeName:''}
+      selectedDestination: {}
     };
 
     this.onSelectDestination = this.onSelectDestination.bind(this);
@@ -32,6 +32,17 @@ class EditContentPage extends React.Component {
 
     render()
     {
+      let editHint = (()=>{
+        if(!this.state.selectedDestination.placeName){
+        return (
+          <p>Selet destination from the left sidebar</p>
+        )
+        }
+        else{
+          return null;
+        }
+      })();
+
       return (
         <div className="row mdl-layout--fixed-drawer">
           <DestinationsList
@@ -39,7 +50,7 @@ class EditContentPage extends React.Component {
             selectDestination={this.onSelectDestination}/>
           <div className="col-xs-9">
             <h1>Edit destination</h1>
-            <EditDestination selectedDestination={this.state.selectedDestination} />
+            {editHint}
             <DestinationForm selectedDestination={this.state.selectedDestination}/>
           </div>
         </div>
