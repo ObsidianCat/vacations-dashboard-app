@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 import * as destinationActions from '../actions/destinationActions';
 import DestinationsList from './DestinationsList';
 import EditDestination from './EditDestination';
+import DestinationForm from './DestinationForm';
 
 import { browserHistory } from 'react-router';
 
@@ -39,6 +40,7 @@ class EditContentPage extends React.Component {
           <div className="col-xs-9">
             <h1>Edit destination</h1>
             <EditDestination selectedDestination={this.state.selectedDestination} />
+            <DestinationForm selectedDestination={this.state.selectedDestination}/>
           </div>
         </div>
       )
