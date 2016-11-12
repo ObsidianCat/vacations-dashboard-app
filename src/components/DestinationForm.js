@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 
 import * as DESTINATION_DATA from '../constants/destination';
+import _ from 'lodash';
 
 // import ART_TAGS from '../constants/destination';
 class DestinationForm extends React.Component{
@@ -32,15 +33,22 @@ class DestinationForm extends React.Component{
     // };
   }
 
-  artTagsList = DESTINATION_DATA.ART_TAGS.map(function(tag) {
-    return (
-      <Checkbox
-        key={tag.name}
-        label={tag.name}
-      />
-    );
-  });
 
+
+  createArtTagsList = (destination)=>{
+    const tags = DESTINATION_DATA.ART_TAGS.map(function(tag) {
+      console.log('artTagsList');
+      debugger;
+
+      return (
+        <Checkbox
+          key={tag.name}
+          label={tag.name}
+        />
+      );
+    });
+    return tags;
+  };
 
   historyTagsList = DESTINATION_DATA.HISTORY_TAGS.map(function(tag) {
     return (
@@ -56,6 +64,9 @@ class DestinationForm extends React.Component{
     if(!this.state.destination.placeName){
       return null;
     } else{
+
+      const artTagsList = this.createArtTagsList(this.state.destination);
+
       return (
         <form action="#">
           <fieldset className="destination-detailes">
