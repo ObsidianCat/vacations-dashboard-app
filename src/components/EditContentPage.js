@@ -23,44 +23,50 @@ class EditContentPage extends React.Component {
 
   }
 
-    onSelectDestination(dest)
-    {
-      console.log('onSelectDestination', dest);
-      this.setState({selectedDestination:dest});
-      console.log(this.state.selectedDestination);
-    };
+  onSelectDestination(dest)
+  {
+    console.log('onSelectDestination', dest);
+    this.setState({selectedDestination:dest});
+    console.log(this.state.selectedDestination);
+  };
 
-    render()
-    {
-      let editHint = (()=>{
-        if(!this.state.selectedDestination.placeName){
-        return (
-          <p>Selet destination from the left sidebar</p>
-        )
-        }
-        else{
-          return null;
-        }
-      })();
-
+  onFormSubmit(event, data){
+    event.preventDefault();
+    console.log(data);
+  }
+  render()
+  {
+    let editHint = (()=>{
+      if(!this.state.selectedDestination.placeName){
       return (
-        <div className="row mdl-layout--fixed-drawer">
-          <DestinationsList
-            destinations={this.props.destinations}
-            selectDestination={this.onSelectDestination}/>
-          <div className="col-xs-9">
-            <h1>Edit destination</h1>
-            {editHint}
-            <DestinationForm selectedDestination={this.state.selectedDestination}/>
-          </div>
-        </div>
+        <p>Selet destination from the left sidebar</p>
       )
-    }
+      }
+      else{
+        return null;
+      }
+    })();
+
+    return (
+      <div className="row mdl-layout--fixed-drawer">
+        <DestinationsList
+          destinations={this.props.destinations}
+          selectDestination={this.onSelectDestination}/>
+        <div className="col-xs-9">
+          <h1>Edit destination</h1>
+          {editHint}
+          <DestinationForm onFormSubmit={this.onFormSubmit} selectedDestination={this.state.selectedDestination}/>
+        </div>
+      </div>
+    )
+  }
 
 }
 
 EditContentPage.propTypes = {
-  destinations: PropTypes.array.isRequired
+  destinations: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+
 };
 
 function mapStateToProps(state, ownProps){
