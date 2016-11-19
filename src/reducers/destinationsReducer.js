@@ -7,8 +7,8 @@ export default function destinationReducer(state = initialState.destinations, ac
       return action.destinations;
     case types.UPDATE_DEST_SUCCESS:
       return [
-        ...state.filter(dest => dest._id != action.destination._id),
-        Object.assign({}, action.destination)
+        ...state.filter(dest => dest._id != action.response._id),
+        Object.assign({}, action.response)
       ];
     default:
       return state;
