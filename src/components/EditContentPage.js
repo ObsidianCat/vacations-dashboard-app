@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as destinationActions from '../actions/destinationActions';
 import DestinationsList from './DestinationsList';
-import EditDestination from './EditDestination';
 import DestinationForm from './DestinationForm';
 
 import { browserHistory } from 'react-router';
@@ -16,11 +15,11 @@ class EditContentPage extends React.Component {
     super(props, context);
 
     this.state = {
-      selectedDestination: {}
+      selectedDestination:this.props.selectedDestination,
     };
 
     this.onSelectDestination = this.onSelectDestination.bind(this);
-
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onSelectDestination(dest)
@@ -32,7 +31,7 @@ class EditContentPage extends React.Component {
 
   onFormSubmit(event, data){
     event.preventDefault();
-    console.log(data);
+    this.props.actions.updateDestination(data);
   }
   render()
   {
@@ -65,12 +64,17 @@ class EditContentPage extends React.Component {
 
 EditContentPage.propTypes = {
   destinations: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-
+  selectedDestination: PropTypes.object.isRequired,
+  actions:PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps){
+  let selectedDestination = {
+    placeName:'',
+    countryName:'',
+  };
   return {
+    selectedDestination: selectedDestination,
     destinations: state.destinations
   }
 }

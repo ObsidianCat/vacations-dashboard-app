@@ -100,7 +100,7 @@ class DestinationForm extends React.Component{
               hintText="Destination Name"
               floatingLabelText="Destination Name"
               id="destination-name-field"
-              value={this.state.destination.placeName||''}
+              value={this.state.destination.placeName}
               onChange={this.handleChange}
               name="placeName"
               data-type="basicInfo"
@@ -109,7 +109,7 @@ class DestinationForm extends React.Component{
               hintText="Country Name"
               floatingLabelText="Country Name"
               id="destination-name-field"
-              value={this.state.destination.countryName||''}
+              value={this.state.destination.countryName}
               onChange={this.handleChange}
               name="countryName"
               data-type="basicInfo"
@@ -146,9 +146,10 @@ class DestinationForm extends React.Component{
   }
 }
 
-// DestinationForm.propTypes = {
-//   selectedDestination: PropTypes.object
-// };
+DestinationForm.propTypes = {
+  selectedDestination: PropTypes.object,
+  // onFormSubmit:PropTypes.function,
+};
 // DestinationForm.defaultProps = {
 //   selectedDestination: {placeName:'Palma di Maiorca'}
 // };

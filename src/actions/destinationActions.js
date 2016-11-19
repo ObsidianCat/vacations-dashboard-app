@@ -4,37 +4,45 @@ import * as types from './actionTypes';
 export function loadDestsSuccess(destinations) {
   return {type: types.LOAD_ALL_DESTS_SUCCESS, destinations};
 }
-
+export function updateDestsSuccess(response) {
+  return {type: types.UPDATE_DEST_SUCCESS, response};
+}
 
 export function loadAllDestinations() {
   return dispatch =>{
-    return fetch(`https://art-and-history.herokuapp.com/api/destinations`)
-      .then(response => response.json())
-      .then(json => dispatch(loadDestsSuccess(json)))
+    return fetch(`http://localhost:3333/api/destinations`)
+      .then(function(response) {
+        return response.json()
+      })
+      .then((response) => {
+        dispatch(loadDestsSuccess(response));
+      })
       .catch(error =>{
         throw(error)
     })
   }
 }
 
-export function updateDestination() {
-  return dispatch =>{
-    // return fetch(`https://art-and-history.herokuapp.com/api/destinations`)
-    //   .then(response => response.json())
-    //   .then(json => dispatch(loadDestsSuccess(json)))
-    //   .catch(error =>{
-    //     throw(error)
-    //   })
-    fetch('/users', {
-      method: 'POST',
+export function updateDestination(destination) {
+  console.log(destination);
+  return (dispatch, getState) =>{
+    return fetch(`http://localhost:3333/api/destinations/${destination._id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: 'Hubot',
-        login: 'hubot',
-      })
+      body: JSON.stringify(destination)
     })
+      .then(function(response) {
+        return response.json();
+      })
+      .then((response)=>{
+        console.log(response);
+        dispatch(updateDestsSuccess(response));
 
-  }
+      })
+      .catch((error)=>{
+      throw(error);
+    });
+  };
 }
