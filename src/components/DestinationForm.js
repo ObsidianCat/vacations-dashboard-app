@@ -21,7 +21,7 @@ class DestinationForm extends React.Component{
   }
 
   handleChange = (event, elementState) => {
-    let destination = this.state.destination;
+    let destination = _.cloneDeep(this.state.destination);
 
     switch(event.target.dataset.type) {
       case 'artTags':
@@ -122,15 +122,7 @@ class DestinationForm extends React.Component{
           <fieldset className="history-tags">
             <legend>History Tags</legend>
             {historyTagsList}
-
           </fieldset>
-
-          {/*<div>*/}
-            {/*<RaisedButton*/}
-              {/*onClick={this.onSubmit}*/}
-              {/*label="Update"*/}
-              {/*primary={true} />*/}
-          {/*</div>*/}
 
           <fieldset>
             <input
