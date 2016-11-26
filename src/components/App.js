@@ -19,9 +19,6 @@ const App = (props) =>{
               <p className="mdl-navigation__link">
                 <Link to="/edit">Edit content</Link>
               </p>
-              <p className="mdl-navigation__link" >
-                <Link to="/create">Create content</Link>
-              </p>
             </nav>
           </div>
         </header>

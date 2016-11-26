@@ -29,12 +29,22 @@ class EditContentPage extends React.Component {
     console.log(this.state.selectedDestination);
   };
 
-  onFormSubmit(event, data){
+  onFormSubmit(event, data, action){
     event.preventDefault();
-    this.props.actions.updateDestination(data);
+    if(action==='delete'){
+      this.props.actions.deleteDestination(data);
+    }
+    else{
+      if(data._id){
+        this.props.actions.updateDestination(data);
+      }
+      else{
+        this.props.actions.createDestination(data);
+      }
+    }
   }
-  render()
-  {
+
+  render() {
     let editHint = (()=>{
       if(!this.state.selectedDestination.placeName){
       return (
@@ -47,12 +57,12 @@ class EditContentPage extends React.Component {
     })();
 
     return (
-      <div className="row mdl-layout--fixed-drawer">
+      <div className="edit-destination row">
         <DestinationsList
           destinations={this.props.destinations}
           selectDestination={this.onSelectDestination}/>
         <div className="col-xs-9">
-          <h1>Edit destination</h1>
+          <h2>Edit destination</h2>
           {editHint}
           <DestinationForm onFormSubmit={this.onFormSubmit} selectedDestination={this.state.selectedDestination}/>
         </div>

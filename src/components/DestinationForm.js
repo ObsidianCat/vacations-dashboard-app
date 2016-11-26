@@ -84,9 +84,13 @@ class DestinationForm extends React.Component{
   onSubmit = (event)=>{
     this.props.onFormSubmit(event, this.state.destination);
   };
-
+  onClickDelete = (event)=>{
+    this.props.onFormSubmit(event, this.state.destination, 'delete');
+  };
   render(){
-    if(!this.state.destination.placeName){
+    const isShowForm = this.state.destination._id || this.state.destination.newItem;
+
+    if(!isShowForm){
       return null;
     } else{
 
@@ -126,9 +130,15 @@ class DestinationForm extends React.Component{
 
           <fieldset>
             <input
+              type="button"
+              value={'Delete'}
+              className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              onClick={this.onClickDelete}
+            />
+            <input
               type="submit"
               value={'Save'}
-              className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent "
               onClick={this.onSubmit}/>
           </fieldset>
         </form>

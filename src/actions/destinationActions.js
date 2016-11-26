@@ -7,6 +7,10 @@ export function loadDestsSuccess(destinations) {
 export function updateDestsSuccess(response) {
   return {type: types.UPDATE_DEST_SUCCESS, response};
 }
+export function createDestsSuccess(response) {
+  return {type: types.CREATE_DEST_SUCCESS, response};
+}
+
 
 export function loadAllDestinations() {
   return dispatch =>{
@@ -46,3 +50,47 @@ export function updateDestination(destination) {
     });
   };
 }
+
+export function createDestination(destination) {
+  console.log(destination);
+  return (dispatch, getState) =>{
+    return fetch(`http://localhost:3333/api/destinations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(destination)
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then((response)=>{
+        console.log(response);
+        dispatch(createDestsSuccess(response));
+
+      })
+      .catch((error)=>{
+        throw(error);
+      });
+  };
+}
+
+export function deleteDestination(destination) {
+  console.log(destination);
+  return (dispatch, getState) =>{
+    return fetch(`http://localhost:3333/api/destinations/${destination._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(destination)
+    })
+      .then(function(response) {
+        loadAllDestinations();
+      })
+      .catch((error)=>{
+        throw(error);
+      });
+  };
+}
+

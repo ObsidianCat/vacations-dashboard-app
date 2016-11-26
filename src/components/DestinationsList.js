@@ -8,8 +8,18 @@ const DestinationsList = ({destinations, selectDestination })=>{
   });
 
   return (
-    <div className="col-xs-3">
-      <span className="mdl-layout-title">Destinations</span>
+    <div className="edit-destination__sidebar col-xs-3">
+      <p className="mdl-button mdl-js-button" onClick={()=>{selectDestination({
+        placeName:'',
+        countryName:'',
+        artTags:[],
+        historyTags:[],
+        newItem:true,
+      }
+      )}}>
+        Create new destination
+      </p>
+      <p className="mdl-layout-title">Destinations</p>
       <nav className="mdl-list">
         {menuItems}
       </nav>
@@ -19,8 +29,7 @@ const DestinationsList = ({destinations, selectDestination })=>{
 
 DestinationsList.propTypes = {
   destinations: PropTypes.array.isRequired,
-  selectDestination: PropTypes.func.isRequired
-
+  selectDestination: PropTypes.func.isRequired,
 };
 
 export default DestinationsList;
