@@ -152,8 +152,6 @@ DestinationForm.propTypes = {
   selectedDestination: PropTypes.object,
   // onFormSubmit:PropTypes.function,
 };
-// DestinationForm.defaultProps = {
-//   selectedDestination: {placeName:'Palma di Maiorca'}
-// };
+
 
 export default DestinationForm;
