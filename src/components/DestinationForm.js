@@ -53,12 +53,11 @@ class DestinationForm extends React.Component{
   };
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.selectedDestination._id != nextProps.selectedDestination._id){
-      this.setState({
-        destination:Object.assign({}, nextProps.selectedDestination)
-      });
-    }
+    this.setState({
+      destination: Object.assign({}, nextProps.selectedDestination)
+    });
   }
+
 
   createTagsList = (destinationTags, allTags, tagType)=>{
     const onChangeCallback = this.handleChange;

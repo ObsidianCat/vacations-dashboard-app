@@ -22,24 +22,37 @@ class EditContentPage extends React.Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps !== this.props){
+      this.onSelectDestination({});
+    }
+  }
+
   onSelectDestination(dest)
   {
-    console.log('onSelectDestination', dest);
-    this.setState({selectedDestination:dest});
-    console.log(this.state.selectedDestination);
+    this.setState({selectedDestination: Object.assign({}, dest)});
   };
 
   onFormSubmit(event, data, action){
     event.preventDefault();
     if(action==='delete'){
-      this.props.actions.deleteDestination(data);
+      this.props.actions.deleteDestination(data)
+        .then(()=>{
+          this.onSelectDestination({});
+        });
     }
     else{
       if(data._id){
-        this.props.actions.updateDestination(data);
+        this.props.actions.updateDestination(data)
+          .then(()=>{
+            this.onSelectDestination({});
+          });
       }
       else{
-        this.props.actions.createDestination(data);
+        this.props.actions.createDestination(data)
+          .then(()=>{
+            this.onSelectDestination({});
+          });
       }
     }
   }
@@ -48,7 +61,7 @@ class EditContentPage extends React.Component {
     let editHint = (()=>{
       if(!this.state.selectedDestination.placeName){
       return (
-        <p>Selet destination from the left sidebar</p>
+        <p>Select destination from the left sidebar</p>
       )
       }
       else{
