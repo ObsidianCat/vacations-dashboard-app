@@ -3,7 +3,6 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import EditPage from './components/EditContentPage';
-import CreatePage from './components/CreateContentPage';
 import HomePage from './components/HomePage';
 
 
