@@ -1,7 +1,9 @@
-@import "layout/app";
-@import "layout/edit-page";
 @import 'base/reset';
 @import 'abstracts/vars';
+@import "layout/app";
+@import "layout/base-page";
+@import "pages/homePage";
 @import 'components/header';
 @import 'components/destination-sidebar';
+@import 'components/recent-activities-list';
 
