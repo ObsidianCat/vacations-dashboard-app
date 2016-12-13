@@ -9,7 +9,7 @@ const DestinationsList = ({destinations, selectDestination })=>{
 
   return (
     <div className="edit-destination__sidebar col-xs-3">
-      <p className="mdl-button mdl-js-button" onClick={()=>{selectDestination({
+      <p className="mdl-button mdl-button--accent mdl-button--raised mdl-js-button" onClick={()=>{selectDestination({
         placeName:'',
         countryName:'',
         artTags:[],
