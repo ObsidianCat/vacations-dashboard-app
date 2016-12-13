@@ -57,6 +57,11 @@ class EditContentPage extends React.Component {
     }
   }
 
+  componentDidMount(){
+    console.log("Edit Content Page", this.props.actions);
+    this.props.actions.loadAllDestinations();
+  }
+
   render() {
     let editHint = (()=>{
       if(!this.state.selectedDestination.placeName){

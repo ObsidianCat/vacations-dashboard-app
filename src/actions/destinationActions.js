@@ -28,7 +28,7 @@ export function loadAllDestinations() {
 }
 
 export function updateDestination(destination) {
-  return (dispatch, getState) =>{
+  return (dispatch) =>{
     return fetch(`http://localhost:3333/api/destinations/${destination._id}`, {
       method: 'PUT',
       headers: {
@@ -50,7 +50,7 @@ export function updateDestination(destination) {
 }
 
 export function createDestination(destination) {
-  return (dispatch, getState) =>{
+  return (dispatch) =>{
     return fetch(`http://localhost:3333/api/destinations`, {
       method: 'POST',
       headers: {
@@ -72,7 +72,7 @@ export function createDestination(destination) {
 }
 
 export function deleteDestination(destination) {
-  return (dispatch, getState) =>{
+  return (dispatch) =>{
     return fetch(`http://localhost:3333/api/destinations/${destination._id}`, {
       method: 'DELETE',
       headers: {
@@ -80,7 +80,7 @@ export function deleteDestination(destination) {
       },
       body: JSON.stringify(destination)
     })
-      .then(function(response) {
+      .then(function() {
         dispatch(loadAllDestinations())
       })
       .catch((error)=>{

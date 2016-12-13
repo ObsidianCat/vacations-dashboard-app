@@ -11,7 +11,6 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
     <Route path="edit" component={EditPage}/>
-    <Route path="create" component={CreatePage}/>
     <Route path="*" component={HomePage}/>
   </Route>
 );

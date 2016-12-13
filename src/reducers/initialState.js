@@ -3,6 +3,5 @@
  */
 export default {
   destinations:[],
-  books:[],
-  advices:[],
+  activities:[]
 };
