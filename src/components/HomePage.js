@@ -3,27 +3,27 @@
  */
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
-moment().format();
+import {bindActionCreators} from 'redux';
+import * as activitiesActions from '../actions/activitiesActions';
+import ActivitiesList from './ActivitiesList';
 
-export const HomePage = (props) => {
-  const activities = props.activities.map((activity, index) => {
-    let activityDate = moment(activity.date).format("dddd, MMMM Do YYYY, h:mm:ss a");
-    return <li className="recentActivitiesList--item mdl-list__item" key={index}>
-      <span className="recentActivitiesList--date">{activityDate}</span>
-      <span className="recentActivitiesList--name">{activity.message}</span>
-    </li>;
-  });
-
-  return (
-    <div className="homePage">
-      <h2>Recent actions</h2>
-      <ul className="recentActivitiesList">
-        {activities}
-      </ul>
-    </div>
-  );
-};
+class HomePage extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+  componentDidMount(){
+    console.log("Homepage", "componentDidMount",this.props.actions.loadRecentActivities);
+    this.props.actions.loadRecentActivities();
+  }
+  render() {
+    return (
+      <div className="homePage">
+        <h2>Recent actions</h2>
+        <ActivitiesList activitiesData={this.props.activities}></ActivitiesList>
+      </div>
+    );
+  }
+}
 
 HomePage.propTypes = {
   activities: PropTypes.array.isRequired
@@ -39,6 +39,7 @@ function mapStateToProps(state, ownProps){
 
 function mapDispatchToProps(dispatch) {
   return {
+    actions: bindActionCreators(activitiesActions, dispatch)
   }
 }
 
